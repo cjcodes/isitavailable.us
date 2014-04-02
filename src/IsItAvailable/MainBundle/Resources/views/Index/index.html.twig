@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="container">
+<h1>Is it available?</h1>
+    {% for room in rooms %}
+        <h2>{{ room.name }}</h2>
+        <p>{{ room.nextEvent.who }}</p>
+    {% endfor %}
+</div>
+{% endblock %}

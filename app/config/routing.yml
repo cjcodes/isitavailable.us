@@ -1,0 +1,10 @@
+is_it_available_main:
+    resource: "@IsItAvailableMainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+is_it_available_room:
+    resource: "@IsItAvailableRoomBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
