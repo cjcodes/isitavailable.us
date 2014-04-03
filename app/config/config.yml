@@ -36,6 +36,8 @@ assetic:
     bundles:        [ ]
     #java: /usr/bin/java
     filters:
+        uglifyjs2:
+            bin: ./app/Resources/node_modules/uglify-js/bin/uglifyjs
         cssrewrite: ~
         scss: ~
         compass:
@@ -87,3 +89,4 @@ braincrafted_bootstrap:
         twig: true
         knp_menu: true
         knp_paginator: false
+

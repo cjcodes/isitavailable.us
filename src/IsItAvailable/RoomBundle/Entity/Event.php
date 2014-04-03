@@ -157,4 +157,13 @@ class Event
     {
         return new \DateTimezone(date_default_timezone_get());
     }
+
+    public function toArray()
+    {
+        return array(
+            'startTime' => $this->startTime->getTimestamp(),
+            'endTime' => $this->endTime->getTimestamp(),
+            'who' => $this->who,
+        );
+    }
 }

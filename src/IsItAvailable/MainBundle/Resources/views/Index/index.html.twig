@@ -1,10 +1,17 @@
 {% extends '::base.html.twig' %}
 {% block body %}
 <div class="container">
-<h1>Is it available?</h1>
-    {% for room in rooms %}
-        <h2>{{ room.name }}</h2>
-        <p>{{ room.nextEvent.who }}</p>
-    {% endfor %}
+    <div class="row"></div>
 </div>
+<script id="room-template" type="text/x-handlebars-template">
+{% verbatim -%}
+<div class="entry-container">
+    <div class="entry">
+        <h2>{{name}}</h2>
+        <h3>{{nextEvent.who}}</h3>
+        <p class="time"></p>
+    </div>
+</div>
+{%- endverbatim %}
+</script>
 {% endblock %}

@@ -24,6 +24,7 @@
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "braincrafted/bootstrap-bundle": "~2.0",
+        "friendsofsymfony/jsrouting-bundle": "@stable",
 
         "knplabs/knp-menu": "2.0.*@dev",
         "knplabs/knp-menu-bundle": "dev-master",

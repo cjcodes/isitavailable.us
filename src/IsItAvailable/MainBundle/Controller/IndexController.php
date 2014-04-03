@@ -21,7 +21,7 @@ class IndexController extends Controller
     public function indexAction()
     {
         return array(
-            'rooms' => $this->getRooms(),
+
         );
     }
 
@@ -33,17 +33,17 @@ class IndexController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        foreach ($json['feed']['entry'] as $event) {
-            $endTime = new \DateTime($event['gd$when'][0]['endTime']);
+        foreach ($json['feed']['entry'] as $eventRaw) {
+            $endTime = new \DateTime($eventRaw['gd$when'][0]['endTime']);
 
             if ($endTime < new \DateTime()) {
                 continue;
             }
 
-            $startTime = new \DateTime($event['gd$when'][0]['startTime']);
+            $startTime = new \DateTime($eventRaw['gd$when'][0]['startTime']);
 
-            foreach ($event['gd$who'] as $who) {
-                if (!strpos($who['email'], 'calendar.google.com')) {
+            foreach ($eventRaw['gd$who'] as $who) {
+                if (strpos($who['rel'], 'organizer')) {
                     $owner = $who['valueString'];
                     break;
                 }
@@ -62,11 +62,16 @@ class IndexController extends Controller
     }
 
     /**
-     * @Route("/status")
+     * @Route("/status", name="status")
      */
     public function statusAction()
     {
-        return new JsonResponse($this->getRooms());
+        $rooms = $this->getRooms();
+        array_walk($rooms, function (&$item, $key) {
+            $item = $item->toArray();
+        });
+
+        return new JsonResponse($rooms);
     }
 
     /**
@@ -76,7 +81,8 @@ class IndexController extends Controller
      */
     private function getRooms()
     {
-        $rooms = $this->getDoctrine()->getManager()->getRepository('IsItAvailableRoomBundle:Room')->findAll();
+        $rooms = $this->getDoctrine()->getManager()->getRepository('IsItAvailableRoomBundle:Room')
+            ->findBy(array(), array('id' => 'asc'));
 
         foreach ($rooms as $room) {
             $this->updateNextEvent($room);

@@ -175,10 +175,19 @@ class Room
     /**
      * Get nextEvent
      *
-     * @return \IsItAvailable\RoomBundle\Entity\Event 
+     * @return \IsItAvailable\RoomBundle\Entity\Event
      */
     public function getNextEvent()
     {
         return $this->nextEvent;
+    }
+
+    public function toArray()
+    {
+        return array(
+            'nextEvent' => $this->nextEvent->toArray(),
+            'name' => $this->name,
+            'status' => $this->status,
+        );
     }
 }

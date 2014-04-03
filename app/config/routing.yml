@@ -2,9 +2,13 @@ is_it_available_main:
     resource: "@IsItAvailableMainBundle/Controller/"
     type:     annotation
     prefix:   /
+    options:
+        expose: true
 
 is_it_available_room:
     resource: "@IsItAvailableRoomBundle/Controller/"
     type:     annotation
     prefix:   /
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
