@@ -17,7 +17,6 @@ use IsItAvailable\RoomBundle\Form\RoomType;
  */
 class RoomController extends Controller
 {
-
     /**
      * Lists all Room entities.
      *
@@ -35,6 +34,7 @@ class RoomController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Room entity.
      *
@@ -169,6 +169,7 @@ class RoomController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Room entity.
      *
@@ -202,6 +203,7 @@ class RoomController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Room entity.
      *
