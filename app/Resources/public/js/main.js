@@ -29,11 +29,11 @@ Room.prototype.getHtml = function () {
     var text = '';
     if (st > moment()) {
         text = 'Starting ';
-        var minutes = (et.unix() - moment().unix()) / 60;
+        var minutes = (st.unix() - moment().unix()) / 60;
         if (minutes > 60) {
             text += 'at ' + st.format('hh:mm a');
         } else {
-            text += 'in ' + Math.round(minutes) + 'minutes';
+            text += 'in ' + Math.round(minutes) + ' minutes';
         }
     } else {
         text = 'Ending in ';
